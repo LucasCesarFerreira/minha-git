@@ -40,7 +40,10 @@ def jogo_adivinha():
         menor = (chute < numero_secreto)
 
         if acertou:
-            print("Voce acertou!")
+            print(19 * "*")
+            print(19*"*","\n***Voce acertou!***")
+            print(19*"*")
+            print(19*"*")
             break
         elif maior:
             print("Voce errou! O numero secreto é menor")
@@ -53,6 +56,7 @@ def jogo_adivinha():
     if not acertou:
         pontos = pontos - 600
         print("Sua pontuação foi", pontos, "pontos!")
+        print("O numero secreto era:",numero_secreto)
         print("Suas Tentativas acabaram! Encerrando o jogo")
     else:
         print("Sua pontuação foi", pontos, "pontos!")
