@@ -1,22 +1,19 @@
 import random
 
 
-def jogo_forca():
+def imprime_mensagem_abertura():
     # anunciando o jogo
     print(32 * "*")
     print("***Bem vindo ao jogo da forca***")
     print(32 * "*")
 
-    # declarando variaveis para o jogo funcionar corretamente
-    acertou = False
-    enforcado = False
-    val = 0
 
+def palavra_segredo():
     # pegando as possiveis palavras secretas de um arquivo
     lista = []
-    arquivo=open("palavras.txt","r")
+    arquivo = open("palavras.txt", "r")
     for linha in arquivo:
-        linha=linha.strip()
+        linha = linha.strip()
         lista.append(linha)
     arquivo.close()
     # escolhendo a palavra da lista que sera usada no jogo
@@ -24,16 +21,15 @@ def jogo_forca():
 
     # transformando a palavra secreta em str e gerando a versão da palavra apenas em traços
     palavra_secreta = str(lista[x])
-    segredo = (len(palavra_secreta) * "_")
-    print(segredo)
-    s = list(segredo)
 
-    # gerando o desenho da forca, que ditara a quantia de vezes que um jogador pode errar
-    enforca = "o-|--<"
-    en = (len(enforca) * "_")
-    enfo = list(enforca)
-    e = list(en)
-    print(en)
+    return palavra_secreta
+
+
+def cerne_do_jogo(palavra_secreta, e, enfo, s, enforca):
+    # declarando variaveis para o jogo funcionar corretamente
+    acertou = False
+    enforcado = False
+    val = 0
 
     # começando o laço principal do jogo
     while not enforcado and not acertou:
@@ -69,6 +65,26 @@ def jogo_forca():
         if segredo.__eq__(palavra_secreta):
             print("Voce Venceu!")
             acertou = True
+
+
+def jogo_forca():
+    # Imprimindo o nome do jogo
+    imprime_mensagem_abertura()
+
+    # Criando a lista de palavra secreta e dando dica para o jogador de quantia de letras
+    palavra_secreta = palavra_segredo()
+    segredo = (len(palavra_secreta) * "_")
+    print(segredo)
+    s = list(segredo)
+
+    # gerando o desenho da forca, que ditara a quantia de vezes que um jogador pode errar
+    enforca = "o-|--<"
+    en = (len(enforca) * "_")
+    enfo = list(enforca)
+    e = list(en)
+    print(en)
+
+    cerne_do_jogo(palavra_secreta, e, enfo, s, enforca)
 
     print("Fim de jogo")
 
