@@ -12,10 +12,13 @@ def jogo_forca():
     enforcado = False
     val = 0
 
-    # gerando algumas possiveis palavras secretas para o jogo
-    lista = ("amizade", "sincero", "aventura", "felicidade", "enigma", "paixao", "desafio", "misterio", "liberdade",
-             "conquista", "chupacabra")
-
+    # pegando as possiveis palavras secretas de um arquivo
+    lista = []
+    arquivo=open("palavras.txt","r")
+    for linha in arquivo:
+        linha=linha.strip()
+        lista.append(linha)
+    arquivo.close()
     # escolhendo a palavra da lista que sera usada no jogo
     x = random.randrange(0, 11)
 
